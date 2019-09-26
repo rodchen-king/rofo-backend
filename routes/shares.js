@@ -49,7 +49,26 @@ router.get('/getAll', function(req, res, next) {
       connection.release();  
     });
   });
+});
 
+router.post('/insert', function(req, res, next) {
+  pool.getConnection(function(err, connection) { 
+    var param = req.body;
+    console.log(param);
+
+    connection.query(Sharesql.insert, [param.title, param.author, param.share_date], function(err, result) {
+      if(result) {
+        result = {
+          code: 200,
+          data: result,
+          msg:'success'
+        };  
+      }     
+          
+      responseJSON(res, result);   
+      connection.release();  
+    });
+  });
 });
 
 module.exports = router;

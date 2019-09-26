@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS share;
 CREATE TABLE share (
     `id` INT UNSIGNED AUTO_INCREMENT,
     `title` VARCHAR(100) NOT NULL,
-    `author` VARCHAR(40) NOT NULL,
+    `author` VARCHAR(40),
     `share_date` DATE,
     PRIMARY KEY (`id`)
 ) DEFAULT CHARSET 'UTF8';
