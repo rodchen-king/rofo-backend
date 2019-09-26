@@ -28,11 +28,17 @@ router.post('/login', function(req, res, next) {
   // var response = {status:1,data:Share};
   // res.send(JSON.stringify(response));
 
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With,Origin,Content-Type,Accept");
+  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+  res.header("X-Powered-By",' 3.2.1')
+
    // 从连接池获取连接 
   pool.getConnection(function(err, connection) { 
     // 获取前台页面传过来的参数
     debugger
-    var param = req.query || req.params;   
+    var param =req.body;
+
     // 建立连接 查询所有分享数据 
     connection.query(Usersql.getUserByUsername, [param.username, param.password], function(err, result) {
       if(result) {

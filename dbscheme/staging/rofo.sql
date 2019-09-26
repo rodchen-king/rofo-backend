@@ -12,3 +12,14 @@ CREATE TABLE share (
     `share_date` DATE,
     PRIMARY KEY (`id`)
 ) DEFAULT CHARSET 'UTF8';
+
+-- 创建用户表
+DROP TABLE IF EXISTS user;
+CREATE TABLE user (
+  `id` INT UNSIGNED AUTO_INCREMENT,
+  `username` VARCHAR(100) NOT NULL,
+  `password` VARCHAR(40) NOT NULL,
+  `name` VARCHAR(40) NOT NULL,
+	`email` VARCHAR(40) NOT NULL,
+  PRIMARY KEY (`id`)
+) DEFAULT CHARSET 'UTF8';
